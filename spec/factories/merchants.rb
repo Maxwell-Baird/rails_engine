@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :merchant do
-    name { "MyString" }
-    name { "MyString" }
+    name { "Cheese Farm" }
     created_at { "MyString" }
     updated_at { "MyString" }
   end

@@ -18,11 +18,9 @@ task :import => [:environment] do
    merchants = "./db/data/merchants.csv"
 
    CSV.foreach(merchants, :headers => :true) do |row|
-      merchant = Merchant.new
-      merchant.name = row['name']
-      merchant.created_at = row['created_at']
-      merchant.updated_at = row['updated_at']
-      merchant.save!
+      Merchant.create(name: row['name'],
+                      created_at: row['created_at'],
+                      updated_at: row['updated_at'])
    end
 
    puts "Created merchants"
@@ -30,27 +28,23 @@ task :import => [:environment] do
    customers = "./db/data/customers.csv"
 
    CSV.foreach(customers, :headers => :true) do |row|
-      customer = Customer.new
-      customer.first_name = row['first_name']
-      customer.last_name = row['last_name']
-      customer.created_at = row['created_at']
-      customer.updated_at = row['updated_at']
-      customer.save!
+      Customer.create(first_name: row['first_name'],
+                      last_name: row['last_name'],
+                      created_at: row['created_at'],
+                      updated_at: row['updated_at'])
    end
    puts "Created customers"
 
    items = "./db/data/items.csv"
 
    CSV.foreach(items, :headers => :true) do |row|
-      item = Item.new
-      item.name = row['name']
-      item.description = row['description']
-      price = row['unit_price'].to_f / 100.to_f
-      item.unit_price = price
-      item.merchant_id = row['merchant_id']
-      item.created_at = row['created_at']
-      item.updated_at = row['updated_at']
-      item.save!
+     price = row['unit_price'].to_f / 100.to_f
+     Item.create(name: row['name'],
+                  description: row['description'],
+                  unit_price: price,
+                  merchant_id: row['merchant_id'],
+                  created_at: row['created_at'],
+                  updated_at: row['updated_at'])
    end
 
    puts "Created items"
@@ -58,13 +52,11 @@ task :import => [:environment] do
    invoices = "./db/data/invoices.csv"
 
    CSV.foreach(invoices, :headers => :true) do |row|
-      invoice = Invoice.new
-      invoice.customer_id = row['customer_id']
-      invoice.merchant_id = row['merchant_id']
-      invoice.status = row['status']
-      invoice.created_at = row['created_at']
-      invoice.updated_at = row['updated_at']
-      invoice.save!
+     Invoice.create(customer_id: row['customer_id'],
+                    merchant_id: row['merchant_id'],
+                    status: row['status'],
+                    created_at: row['created_at'],
+                    updated_at: row['updated_at'])
    end
 
    puts "Created invoice"
@@ -72,15 +64,13 @@ task :import => [:environment] do
    invoice_items = "./db/data/invoice_items.csv"
 
    CSV.foreach(invoice_items, :headers => :true) do |row|
-      invoice_item = InvoiceItem.new
-      invoice_item.item_id = row['item_id']
-      invoice_item.invoice_id = row['invoice_id']
-      invoice_item.quantity = row['quantity']
-      price = row['unit_price'].to_f / 100.to_f
-      invoice_item.unit_price = price
-      invoice_item.created_at = row['created_at']
-      invoice_item.updated_at = row['updated_at']
-      invoice_item.save!
+     price = row['unit_price'].to_f / 100.to_f
+     InvoiceItem.create(item_id: row['item_id'],
+                        invoice_id: row['invoice_id'],
+                        quantity: row['quantity'],
+                        unit_price: price,
+                        created_at: row['created_at'],
+                        updated_at: row['updated_at'] )
    end
 
    puts 'Created invoice_items'
@@ -88,13 +78,11 @@ task :import => [:environment] do
    transactions = "./db/data/transactions.csv"
 
    CSV.foreach(transactions, :headers => :true) do |row|
-      transaction = Transaction.new
-      transaction.invoice_id = row['invoice_id']
-      transaction.credit_card_number = row['credit_card_number']
-      transaction.result = row['result']
-      transaction.created_at = row['created_at']
-      transaction.updated_at = row['updated_at']
-      transaction.save!
+     Transaction.create(invoice_id: row['invoice_id'],
+                        credit_card_number: row['credit_card_number'],
+                        result: row['result'],
+                        created_at: row['created_at'],
+                        updated_at: row['updated_at'] )
    end
 
    puts 'Created transactions'
