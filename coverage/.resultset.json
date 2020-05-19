@@ -7,16 +7,73 @@
           null,
           1,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
-          0,
           null,
-          0,
+          1,
           null,
-          0,
+          1,
           null,
-          0,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          2,
           null,
           null
         ]
@@ -297,12 +354,12 @@
         "lines": [
           1,
           1,
+          7,
+          7,
+          7,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          7,
+          7,
           null,
           null
         ]
@@ -311,9 +368,9 @@
         "lines": [
           1,
           1,
-          7,
-          7,
-          7,
+          12,
+          12,
+          12,
           null,
           null
         ]
@@ -409,7 +466,15 @@
           null
         ]
       },
-      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/controllers/api/v1/merchants_controller.rb": {
+      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/models/item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           1,
           null,
@@ -448,9 +513,8 @@
           null
         ]
       },
-      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/serializer/merchant_serializer.rb": {
+      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/serializer/item_serializer.rb": {
         "lines": [
-          1,
           1,
           1,
           1,
@@ -458,8 +522,43 @@
           null
         ]
       },
-      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/models/item.rb": {
+      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/controllers/api/v1/merchants_controller.rb": {
         "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/maxwellbaird/turing/module3/project2/rails_engine/app/serializer/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
           1,
           1,
           1,
@@ -477,6 +576,6 @@
         ]
       }
     },
-    "timestamp": 1589596555
+    "timestamp": 1589926957
   }
 }
