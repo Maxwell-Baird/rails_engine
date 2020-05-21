@@ -70,4 +70,52 @@ describe "Item API" do
     expect(Item.count).to eq(0)
     expect{Item.find(id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it 'return items related to merchant' do
+    merchant_id = create(:merchant).id
+    id = create(:item, merchant_id: merchant_id).id
+
+    get "/api/v1/items/#{id}/merchant"
+    expect(response).to be_successful
+    merchant = JSON.parse(response.body)
+
+    expect(merchant['data']['id']).to eq(merchant_id.to_s)
+  end
+
+
+  it 'can find item by attributes' do
+    merchant1 = create(:merchant, name: "will").id
+    item1 = create(:item, merchant_id: merchant1, name: "will pot", description: "blue pot")
+    merchant2 = create(:merchant, name: "John")
+
+    get '/api/v1/items/find?name=ILL'
+    expect(response).to be_successful
+    expect_item1 = JSON.parse(response.body)
+    expect(expect_item1['data']['attributes']['name']).to eq(item1.name)
+
+    item2 = create(:item, merchant_id: merchant1, name: "John Tea", description: "BLUE TEA")
+
+    get '/api/v1/items/find?name=John&description=blue'
+    expect(response).to be_successful
+    expect_item2 = JSON.parse(response.body)
+    expect(expect_item2['data']['attributes']['name']).to eq(item2.name)
+  end
+
+  it 'can find all items by attributes' do
+    merchant1 = create(:merchant, name: "will").id
+    item1 = create(:item, merchant_id: merchant1, name: "will pot")
+    item2 = create(:item, merchant_id: merchant1, name: "William shoes")
+
+    get '/api/v1/items/find_all?name=ILL'
+    expect(response).to be_successful
+    items = JSON.parse(response.body)
+    expect(items['data'].count).to eq(2)
+    expect(items['data'][0]['attributes']['name']).to eq(item1.name)
+    expect(items['data'][1]['attributes']['name']).to eq(item2.name)
+
+    get '/api/v1/items/find_all?name=XY'
+    expect(response).to be_successful
+    merchants = JSON.parse(response.body)
+    expect(merchants['data'].count).to eq(0)
+  end
 end
