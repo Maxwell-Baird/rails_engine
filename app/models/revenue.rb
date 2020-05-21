@@ -1,0 +1,3 @@
+class Revenue < ApplicationRecord
+  
+end
