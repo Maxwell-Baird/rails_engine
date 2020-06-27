@@ -70,12 +70,17 @@ describe "Merchant API" do
 
   it 'can find merchant by attributes' do
     merchant1 = create(:merchant, name: "will")
-    merchant2 = create(:merchant, name: "John")
+    merchant2 = create(:merchant, name: "John", created_at: "2012-30-04")
 
     get '/api/v1/merchants/find?name=ILL'
     expect(response).to be_successful
     merchant = JSON.parse(response.body)
     expect(merchant['data']['attributes']['name']).to eq(merchant1.name)
+    get '/api/v1/merchants/find?created_at=30'
+    expect(response).to be_successful
+    merchant = JSON.parse(response.body)
+    expect(merchant['data']['attributes']['name']).to eq(merchant2.name)
+
   end
 
   it 'can find all merchants by attributes' do

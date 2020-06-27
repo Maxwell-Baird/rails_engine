@@ -1,11 +1,11 @@
 class Api::V1::Items::FindController < ApplicationController
 
   def index
-    render json: ItemSerializer.new(flitter)
+    render json: ItemSerializer.new(filter)
   end
 
   def show
-    render json: ItemSerializer.new(flitter[0])
+    render json: ItemSerializer.new(filter[0])
   end
 
   private
@@ -14,7 +14,7 @@ class Api::V1::Items::FindController < ApplicationController
     params.permit(:name, :description, :unit_price, :merchant_id, :created_at, :updated_at, :id)
   end
 
-  def flitter
+  def filter
 
     item_params.to_h.reduce([]) do |output, (attribute, value)|
       output << Item.where("#{attribute} ilike ?", "%#{value}%")
