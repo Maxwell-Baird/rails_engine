@@ -1,0 +1,19 @@
+langauge: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+  chrome: stable
+dist: xenial
+before_install:
+- yes | gem update --system --force
+- gem install bundler
+script:
+- yarn
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: PUt73AQ4ebwo5slMmllw7RDLMJNMKuGkPwH8WAbdciNsNP3R9FMbW7tdOpBtMhNM0gdGJ4yp0ZBIPl7iA4kKuiyBJ09qYexm6iJkoYGcw62fHmJsodmx5m9Ih6FVGd3+EnvxS14p0Km5/0Oh95AMY6HLBQd049+ssduytOcLxsEMU38Ho68sM0oN/A71dPkyorMjV726Njlminzbk99d0zkh4oZw9oO0RZ/WMU5tCu0k7kQTbEcIxyYurQXYiD9pdC7qNDlzGXuW4MFL2w5SnVDLB5FEj2On6XPT74zB3BtWcve8acZ9up4dsZ4QnqnaKB58JbfWAKRZRQKV2yHeEsm8MHjTNKkan3i7t22y2BfyGLkHAeztfYaLfTSqzZjS+EHBgboqPRWnwBjFH92bjfTmCVQMxi1FbRmmheqkU5WUuBoFo8sDpV0daRQLDx1voJHSSbQYLgUoWV6oXlZv98cNfqe0l3FTzE9w6XOqJOywZyT2I3ZhW1GfvRjpHE5z9w8mNnd/U/f4y9Ju8HhhNF39hT3FANbEjab+r7p4j2XtrfAAaQu85CX09yWMRmoXogaGQio+rRVwcc1yhUhT4fMl/A8j5hC15Zhswso2hJ3wguqlFdhM0s3FEgDiT4XZwk9Ib8CDAhfAVZfo/3nducWAqf7OefdOb77BhXSz848=
+  app: nameless-mesa-15336

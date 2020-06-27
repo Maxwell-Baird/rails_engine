@@ -19,6 +19,8 @@ class Merchant < ApplicationRecord
   end
 
   def revenue_between_dates(start_of_date, end_of_date)
-    invoice.joins(:invoice_item, :transactions).where("invoices.created_at >= '#{start_of_date}' and invoices.created_at <= '#{end_of_date}' and transactions.result = 'success'").sum("invoice_items.quantity * invoice_items.unit_price")
+    invoice.joins(:invoice_item, :transactions)
+    .where("invoices.created_at >= '#{start_of_date}' and invoices.created_at <= '#{end_of_date}' and transactions.result = 'success'")
+    .sum("invoice_items.quantity * invoice_items.unit_price")
   end
 end
