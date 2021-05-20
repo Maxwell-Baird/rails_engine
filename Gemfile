@@ -10,7 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'rspec-rails'
 # Use Puma as the app server
 gem 'pry'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'simplecov', require: false, group: :test
 gem 'fast_jsonapi'
 gem 'rack-cors'
